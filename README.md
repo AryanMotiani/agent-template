@@ -36,16 +36,14 @@ You have a basic concept but need the agent to help you design the architecture.
 
 > **Prompt:** "I have a new project idea: [INSERT BRIEF IDEA]. Execute the `/kickoff` skill. Begin Phase 1 and interview me to define the tech stack, data isolation, and architecture."
 
-### Path B: You Already Have a Draft PRD or Implementation Plan
-You wrote the documentation beforehand, but it needs to be stress-tested for vulnerabilities before execution.
+### Path B: You Already Have a PRD or Implementation Plan
+You wrote the documentation beforehand and want the agent to ingest it, update its context, and skip the initial interview.
 
-> **Prompt:** "I have drafted the core implementation plan for this project. 
+> **Prompt:** "I already have the core implementation plan for this project. 
 > 
 > [PASTE YOUR PRD/PLAN HERE]
 > 
-> Execute the `/kickoff` skill, but **modify Phase 1**: Read this document and act as a sharp, skeptical reviewer. Do not blindly accept my plan. Stress-test my architecture. Grill me on the loopholes, missing edge cases, concurrency risks, data isolation flaws, and impracticalities. Build the strongest case against my design. Ask me hard questions to ensure we are completely in sync. 
-> 
-> Once we have debated and resolved these flaws, update the draft, extract the Ubiquitous Language into `CONTEXT.md`, and then ask me for the Verification Metrics (Phase 2)."
+> Execute the `/kickoff` skill, but **modify Phase 1**: Skip the interview questions. Instead, immediately ingest this documentation, extract the Ubiquitous Language, and update `CONTEXT.md` with the technical standards outlined above. Once complete, ask me for the Verification Metrics (Phase 2)."
 
 ---
 
@@ -68,5 +66,3 @@ After you lock the criteria, authorize the agent to move forward:
 With your GitHub/Linear issues created, drop into the strict engineering loop. Pick up the first issue and paste:
 
 > **Prompt:** "The backlog is ready. Activate the `/tdd` skill to implement Issue #1. Follow the strict Red-Green-Refactor loop. Ensure all actions align with the architectural rules now defined in `CONTEXT.md`."
-
-```
