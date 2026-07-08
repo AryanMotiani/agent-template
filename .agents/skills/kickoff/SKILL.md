@@ -12,7 +12,7 @@ You are the Project Director. Execute these phases sequentially. **Never skip a 
    *"Interview me about this project and ask all necessary questions to identify the core goal. Bias towards small, compartmentalized specs. Make me verify key decisions explicitly so nothing is missed."*
 3. Conduct a relentless technical interview. Focus heavily on data isolation, concurrency strategies, and backend framework structures.
 4. **Ubiquitous Language Extraction:** During the interview, explicitly identify domain-specific terminology (common words and business logic). 
-5. Update the global `CONTEXT.md` with both the architectural design metrics and the new terms in the 'Ubiquitous Language' section.
+5. Update the global `.agents/CONTEXT.md` with both the architectural design metrics and the new terms in the 'Ubiquitous Language' section.
 6. **STOP.** Do not proceed until the user explicitly states: "Alignment complete."
 
 ## Phase 2: The Verification Metrics (Layer 2)
@@ -27,7 +27,7 @@ You are the Project Director. Execute these phases sequentially. **Never skip a 
 2. Present the PRD to the user for review.
 3. **STOP.** Do not proceed until the user explicitly states: "PRD approved."
 4. Once approved, call the `/to-issues` utility skill to break the PRD down into highly compartmentalized, vertical-slice issues.
-5. **Requirement:** Ensure Issue #1 is strictly defined as initializing `CLAUDE.md` / `AGENTS.md` to define the technical repository architecture, skill routing tables, and precise working rules.
+5. **Requirement:** Ensure Issue #1 is strictly defined as initializing `CLAUDE.md` / `.agents/AGENTS.MD` to define the technical repository architecture, skill routing tables, and precise working rules.
 
 ## Phase 4: Implementation Handoff
 1. Advise the user that the backlog is populated.
