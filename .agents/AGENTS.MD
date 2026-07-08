@@ -5,10 +5,10 @@
 - **Directory Layout:**
   - `src/`: Core application modules.
   - `tests/`: Automated test suites accompanying every module.
-  - `.claude/skills/`: Custom orchestration behaviors.
+  - `.agents/` or `.claude/`: Custom behaviors, commands, and templates. **Agent Instruction:** You MUST scan both `.agents/skills/` and `.claude/skills/` recursively, detect whichever directories exist in this workspace, and load all skills and rules from them.
 
 ## b. Skill Routing Table
-- User-Initiated Orchestration: `/kickoff` (Guides spec, validation definition, and lifecycle setup).
+- User-Initiated Orchestration: `/kickoff` (Guides spec, validation definition, and lifecycle setup; supports starting from scratch or onboarding an existing codebase/plan via `/code-review`, `/grill-with-docs`, `/ubiquitous-language`, and a skeptical critique to update context).
 - Model-Initiated Utility Frameworks:
   - Use `mattpocock/skills/to-prd` for functional system design synthesis.
   - Use `mattpocock/skills/to-issues` for backlog distribution.
@@ -19,11 +19,22 @@
 - Active feature backlogs are tracked via local markdown issue sheets or the repository issue management pipeline.
 
 ## d. Project Lifecycle
-1. Alignment Interview (`/kickoff`)
-2. Verification Definition
-3. Task Deconstruction (`/to-issues`)
-4. Red-Green-Refactor Implementation Loop (`/tdd`)
+- **Starting from Scratch:**
+  1. Alignment Interview (`/kickoff` Path A)
+  2. Verification Definition
+  3. Task Deconstruction (`/to-issues`)
+  4. Red-Green-Refactor Implementation Loop (`/tdd`)
+- **Onboarding an Existing Project/Plan:**
+  1. Codebase & Spec Onboarding (`/kickoff` Path B)
+     - Code understanding and review (`/code-review` / manual scan)
+     - Plan / documentation ingestion and grilling (`/grill-with-docs`)
+     - Domain glossary extraction (`/ubiquitous-language`)
+     - Active gap analysis & skepticism loop with the user
+     - Sync decisions and rules into `CONTEXT.md`
+  2. Verification Definition
+  3. Task & Gap Deconstruction (`/to-issues`)
+  4. Red-Green-Refactor Loop (`/tdd`)
 
 ## e. Working Rules
 - Hard Rule: Never skip writing a test case before building an API routing structure.
-- Hard Rule: Never mutate `CLAUDE.md` or the core orchestration scripts autonomously. All workflow structural updates must be keyed in directly by the user.
+- Hard Rule: Never mutate `CLAUDE.md`/`AGENTS.MD`/`CONTEXT.md` or the core orchestration scripts autonomously. All workflow structural updates must be keyed in directly by the user.

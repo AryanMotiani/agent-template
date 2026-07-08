@@ -49,6 +49,7 @@ If starting a brand new project in an empty directory:
    ```bash
    npx -y giget@latest github:AryanMotiani/agent-template/.agents .agents
    ```
+   *(Note: Replace `AryanMotiani/agent-template` with your own repository path if you have forked or customized the template).*
 
 ---
 
@@ -63,7 +64,7 @@ If injecting the template into your primary project repository:
    ```bash
    npx -y giget@latest github:AryanMotiani/agent-template/.agents .agents
    ```
-   *(Note: Since everything is isolated within `.agents`, it will not conflict with or overwrite any root files, like your project's `README.md` or `.gitignore`!)*
+   *(Note: Replace `AryanMotiani/agent-template` with your own repository path if you have forked or customized the template. Since everything is isolated within `.agents`, it will not conflict with or overwrite any root files, like your project's `README.md` or `.gitignore`!)*
 
 ---
 
@@ -76,7 +77,7 @@ Confirm that your target project directory now contains the following:
   ├── skills/
   ├── CONTEXT.md
   ├── AGENTS.MD
-  ├── README.md
+  ├── AGENTS_README.md
   └── skills-lock.json
 ```
 *(Note: The skills are copied directly into the project and should be available to your AI agent. If they are not detected immediately, reload the workspace or restart the AI session.)*
