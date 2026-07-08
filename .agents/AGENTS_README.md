@@ -98,8 +98,21 @@ Once the backlog issues are generated, pick up the first task (e.g., Issue #1 sc
 ---
 
 ## 🗑️ How to Delete the Template
-If you ever want to completely remove this scaffolding, its custom skills, and all AI rules from your repository, run:
+If you ever want to completely remove this scaffolding, its custom skills, and all AI rules from your repository, run the command for your shell:
+
+**Linux / macOS (Bash/Zsh):**
 ```bash
 rm -rf .agents
 ```
+
+**Windows (PowerShell):**
+```powershell
+Remove-Item -Recurse -Force .agents
+```
+
+**Windows (CMD):**
+```cmd
+rmdir /s /q .agents
+```
+
 This leaves zero leftover files in your repository.

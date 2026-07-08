@@ -22,10 +22,22 @@ Once scaffolded, the workspace includes:
 - `.agents/AGENTS_README.md` - Detailed commands, workflows, and developer guide
 
 ## 🗑️ How to Uninstall
-If you want to remove the template and all of its configurations completely from your project, simply run:
+If you want to remove the template and all of its configurations completely from your project, run the command for your shell:
 
+**Linux / macOS (Bash/Zsh):**
 ```bash
 rm -rf .agents
 ```
+
+**Windows (PowerShell):**
+```powershell
+Remove-Item -Recurse -Force .agents
+```
+
+**Windows (CMD):**
+```cmd
+rmdir /s /q .agents
+```
+
 
 For detailed usage, refer to the operations guide at [.agents/AGENTS_README.md](.agents/AGENTS_README.md).
