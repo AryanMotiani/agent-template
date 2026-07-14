@@ -11,6 +11,36 @@ This workflow chains the engineering skills into a complete idea → production 
 
 ---
 
+## 👋 Welcome & Plan Overview (Always Show First)
+
+**When the user types `/kickoff`, you MUST begin by printing the following overview before doing anything else.** This is the user's first impression — make it clear, confident, and helpful.
+
+1. **Greet the user** and explain what `/kickoff` does in one or two sentences:
+   > "Welcome to SkilledAgent! `/kickoff` runs an end-to-end orchestration pipeline that takes your idea from a rough concept to working, test-driven code — using a curated set of engineering skills at each stage."
+
+2. **Print the full phase plan**, showing which skill powers each phase:
+
+   > **Here's the plan — the phases I'll walk you through:**
+   >
+   > | Phase | What happens | Skill used |
+   > |---|---|---|
+   > | 1. Wayfinder | Chart a decision map for your project | `/wayfinder` |
+   > | 2. Code Review | Audit existing code (if applicable) | `/code-review` |
+   > | 3. Grilling | Deep Q&A to reach shared understanding | `/grilling` + `/grill-with-docs` |
+   > | 4. Spec Synthesis | Turn our discussion into a formal spec | `/to-spec` |
+   > | 5. Ticket Breakdown | Break the spec into vertical-slice tickets | `/to-tickets` |
+   > | 6. Implementation | Build each ticket with TDD | `/implement` + `/tdd` |
+   > | 7. Code Review | Post-implementation audit | `/code-review` |
+   > | 8. Suggestions | Holistic review & next steps | _(synthesis — no specific skill)_ |
+   > | 9. Skill Discovery | Explore all 39 available skills | _(guided tour)_ |
+
+3. **Explain how it works** so the user knows what to expect:
+   > "At each phase, I'll **announce the exact skill** I'm about to use, explain **why** it's the right tool for that step, and **ask for your go-ahead** before proceeding. You're always in control — nothing runs silently."
+
+4. **Ask if the user is ready** to begin Phase 1, or if they have questions first.
+
+---
+
 ## 🧭 Mid-Workflow Skill Routing (Always Active)
 
 **This rule is active throughout the ENTIRE workflow, not just at the end.**
@@ -48,6 +78,9 @@ At any point during the pipeline, if the user's prompt or the conversation conte
 
 **Skill:** `/wayfinder`
 
+> 🔧 **Announce to the user before starting:**
+> "I'm now using **`/wayfinder`** — this skill charts a decision map of your project, surfacing unknowns and open decisions so we have a clear path forward."
+
 The project starts as a loose idea wrapped in fog. Use the Wayfinder to find the way.
 
 1. Run `/wayfinder` to chart a decision map.
@@ -66,6 +99,9 @@ The project starts as a loose idea wrapped in fog. Use the Wayfinder to find the
 
 > **Skip this phase** if starting from scratch with no existing code.
 
+> 🔧 **Announce to the user before starting:**
+> "I'm now using **`/code-review`** — this audits your existing code against both coding standards and any spec/PRD, so we know exactly where things stand before designing new work."
+
 1. Ask the user for the fixed point (branch, commit, or tag) to compare against.
 2. Run `/code-review` to audit the existing code along two axes:
    - **Standards:** Does the code follow documented coding standards?
@@ -79,6 +115,9 @@ The project starts as a loose idea wrapped in fog. Use the Wayfinder to find the
 ## Phase 3: Grilling — Deep Q&A Interview
 
 **Skill:** `/grilling` + `/grill-with-docs` (uses `/domain-modeling` internally)
+
+> 🔧 **Announce to the user before starting:**
+> "I'm now using **`/grilling`** — this is the most critical phase. I'll interview you about every aspect of the project (architecture, edge cases, data models) so we reach complete shared understanding before writing any code."
 
 This is the most critical phase. The goal is to reach **complete shared understanding** before any code is written.
 
@@ -101,6 +140,9 @@ This is the most critical phase. The goal is to reach **complete shared understa
 
 **Skill:** `/to-spec`
 
+> 🔧 **Announce to the user before starting:**
+> "I'm now using **`/to-spec`** — this synthesizes everything we've discussed into a formal specification document, so there's a single source of truth before we break things into tickets."
+
 1. Run `/to-spec` to synthesize everything from Phases 1–3 into a formal spec.
 2. The spec includes: Problem Statement, Solution, User Stories, Implementation Decisions, Testing Decisions, Out of Scope.
 3. Present the spec to the user for review.
@@ -114,6 +156,9 @@ This is the most critical phase. The goal is to reach **complete shared understa
 
 **Skill:** `/to-tickets`
 
+> 🔧 **Announce to the user before starting:**
+> "I'm now using **`/to-tickets`** — this breaks your approved spec into tracer-bullet, vertical-slice tickets with blocking edges, so each piece of work is independently buildable and testable."
+
 1. Run `/to-tickets` to break the approved spec into tracer-bullet vertical-slice tickets.
 2. Each ticket cuts through ALL layers (schema, API, UI, tests) — no horizontal slices.
 3. Declare blocking edges between tickets.
@@ -126,6 +171,9 @@ This is the most critical phase. The goal is to reach **complete shared understa
 ## Phase 6: Implementation
 
 **Skill:** `/implement` (uses `/tdd` and `/code-review` internally)
+
+> 🔧 **Announce to the user before starting:**
+> "I'm now using **`/implement`** — this works through each ticket using test-driven development (`/tdd` under the hood), writing tests first, then code, then refactoring. I'll also run `/code-review` checks as I go."
 
 1. Work the **frontier** — pick the first ticket whose blockers are all done.
 2. Run `/implement` for each ticket:
@@ -142,6 +190,9 @@ This is the most critical phase. The goal is to reach **complete shared understa
 ## Phase 7: Post-Implementation Code Review
 
 **Skill:** `/code-review`
+
+> 🔧 **Announce to the user before starting:**
+> "I'm now using **`/code-review`** again — this time to audit all the code we just wrote against both coding standards and the approved spec, catching anything that slipped through."
 
 1. Run `/code-review` against the branch/commit where implementation started.
 2. Review along both axes: Standards compliance and Spec conformance.

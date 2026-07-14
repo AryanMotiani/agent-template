@@ -11,9 +11,14 @@ The entire system is contained natively in the `.agents/` directory, keeping you
 You can activate SkilledAgent in any project instantly. Just open your terminal in the project root and do:
 
 ```bash
-# 1. Install SkilledAgent natively into your current project folder
+# Option A: Run directly (no install needed)
 npx skilledagent
+
+# Option B: Install as a project dependency
+npm i skilledagent
 ```
+
+Both commands scaffold the `.agents/` workspace into your project. Use `npx` for a quick one-time setup, or `npm i` if you want to pin the version in `package.json` for your team.
 
 Then, open your AI agent (like Gemini or Claude Code) and type:
 
@@ -21,7 +26,7 @@ Then, open your AI agent (like Gemini or Claude Code) and type:
 /kickoff
 ```
 
-**That's it!** The agent will instantly load the `.agents/` workflows and walk you through the 8-phase orchestration pipeline to bootstrap, structure, and write TDD-ready code for your features.
+**That's it!** The agent will greet you with a full plan overview — showing every phase, which skill powers it, and why. At each step, it **announces the exact skill** it's about to use and asks for your go-ahead before proceeding. You always know what's happening and why.
 
 ---
 
@@ -49,7 +54,13 @@ Once installed, your workspace is supercharged with:
 
 ## 🚀 How It Works (Next Steps)
 
-After running the quick installation above, the `/kickoff` command turns the AI agent into an active collaborator. Instead of manual prompt-engineering, you get a fully structured, 8-phase pipeline that drives your idea from a tentative concept into a working, automated TDD implementation.
+After running the quick installation above, the `/kickoff` command turns the AI agent into an active collaborator. The moment you type `/kickoff`, the agent:
+
+1. **Shows the full plan** — a table of all 9 phases with the skill name used in each.
+2. **Announces each skill** before using it — you'll see exactly which tool is running and a one-line explanation of why.
+3. **Asks for your go-ahead** — nothing runs silently; you approve every phase transition.
+
+This makes the entire 39-skill system transparent and navigable, even on your first run.
 
 ### Clean Removal
 At any point, if you want to remove all agent behaviors and return to a standard codebase, just delete the `.agents/` folder. Absolutely zero config/cache files are left in your repository root:
