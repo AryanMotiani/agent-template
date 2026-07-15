@@ -48,9 +48,9 @@ If starting a brand new project in an empty directory:
    ```
 2. **Scaffold the Workspace:**
    ```bash
-   npx -y giget@latest github:AryanMotiani/agent-template/.agents .agents
+   npx -y giget@latest github:AryanMotiani/SkilledAgent/.agents .agents
    ```
-   *(Note: Replace `AryanMotiani/agent-template` with your own repository path if you have forked or customized the template).*
+   *(Note: Replace `AryanMotiani/SkilledAgent` with your own repository path if you have forked or customized the template).*
 
 ---
 
@@ -63,9 +63,9 @@ If injecting the template into your primary project repository:
    ```
 2. **Download the Template Folder:**
    ```bash
-   npx -y giget@latest github:AryanMotiani/agent-template/.agents .agents
+   npx -y giget@latest github:AryanMotiani/SkilledAgent/.agents .agents
    ```
-   *(Note: Replace `AryanMotiani/agent-template` with your own repository path if you have forked or customized the template. Since everything is isolated within `.agents`, it will not conflict with or overwrite any root files, like your project's `README.md` or `.gitignore`!)*
+   *(Note: Replace `AryanMotiani/SkilledAgent` with your own repository path if you have forked or customized the template. Since everything is isolated within `.agents`, it will not conflict with or overwrite any root files, like your project's `README.md` or `.gitignore`!)*
 
 ---
 
