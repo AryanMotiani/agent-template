@@ -1,6 +1,6 @@
 {
   "name": "skilledagent",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Scaffold SkilledAgent developer workspace directly into your project",
   "main": "bin/cli.js",
   "bin": {

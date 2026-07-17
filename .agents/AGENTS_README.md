@@ -84,19 +84,23 @@ Confirm that your target project directory now contains the following:
 ```
 *(Note: The skills are copied directly into the project and should be available to your AI agent. If they are not detected immediately, reload the workspace or restart the AI session.)*
 
-### 2. Initiate the Project Kickoff (`/kickoff`)
-Once the folder has been scaffolded, open it in your IDE (e.g. VS Code, Cursor), and start the `/kickoff` workflow. Paste this prompt into the AI agent chat:
-> "I have a new project idea: `[INSERT YOUR PROJECT IDEA/CONCEPT]`. Run the `/kickoff` workflow. Begin with the Wayfinder phase to map the project."
+### 2. Initiate the Project Kickoff (`kickoff`)
+Once the folder has been scaffolded, open it in your IDE (e.g. VS Code, Cursor), and start the `kickoff` workflow. Paste this prompt into the AI agent chat:
+> "I have a new project idea: `[INSERT YOUR PROJECT IDEA/CONCEPT]`. Run the `kickoff` workflow."
 
 This launches the full orchestrated pipeline:
-* **Phase 1 — Wayfinder:** Chart the decision map, explore the problem space, surface unknowns.
-* **Phase 2 — Code Review (if existing code):** Analyze existing codebase against standards.
-* **Phase 3 — Grilling:** Relentless Q&A to build shared understanding — no holes, no ambiguity.
-* **Phase 4 — Spec Synthesis:** Generate the formal spec via `/to-spec`.
-* **Phase 5 — Ticket Breakdown:** Break the spec into tracer-bullet vertical-slice tickets via `/to-tickets`.
-* **Phase 6 — Implementation:** Execute tickets under TDD via `/implement`.
-* **Phase 7 — Post-Implementation Review:** Final `/code-review` pass.
-* **Phase 8 — Suggestions:** Ideas, problems, and improvements for the project.
+* **Phase 0 — Project Scan:** Read and digest the project files to understand what's already here.
+* **Phase 1 — User Vision Intake:** Ask you for your idea, goals, priorities, and every detail.
+* **Phase 2 — Big Decision Grilling:** Resolve foundational project decisions (why, stack, architecture, deployment).
+* **Phase 3 — Wayfinder:** Chart the decision map, explore the problem space, surface remaining unknowns.
+* **Phase 4 — Code Review (if existing code):** Analyze existing codebase against standards.
+* **Phase 5 — Deep Grilling:** Relentless Q&A on architecture and edge cases — no holes, no ambiguity.
+* **Phase 6 — Spec Synthesis:** Generate the formal spec via `/to-spec`.
+* **Phase 7 — Ticket Breakdown:** Break the spec into tracer-bullet vertical-slice tickets via `/to-tickets`.
+* **Phase 8 — Implementation:** Execute tickets under TDD via `/implement`.
+* **Phase 9 — Post-Implementation Review:** Final `/code-review` pass.
+* **Phase 10 — Suggestions:** Ideas, problems, and improvements for the project.
+* **Phase 11 — Skill Discovery:** Explore other available skills.
 
 ### 3. Implement Tasks under strict TDD
 Once the tickets are generated, pick up the first ticket and trigger the implementation loop:

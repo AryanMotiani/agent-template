@@ -8,7 +8,7 @@
   - `.agents/` or `.claude/`: Custom behaviors, commands, and templates. **Agent Instruction:** You MUST scan both `.agents/skills/` and `.claude/skills/` recursively, detect whichever directories exist in this workspace, and load all skills and rules from them.
 
 ## b. Skill Routing Table
-- User-Initiated Orchestration: `/kickoff` workflow (Guides planning, grilling, spec creation, and implementation lifecycle; supports starting from scratch or onboarding an existing codebase via `/wayfinder`, `/code-review`, `/grilling`, `/grill-with-docs`, and `/to-spec`).
+- User-Initiated Orchestration: `kickoff` workflow (Guides planning, grilling, spec creation, and implementation lifecycle; supports starting from scratch or onboarding an existing codebase via `/wayfinder`, `/code-review`, `/grilling`, `/grill-with-docs`, and `/to-spec`).
 - Model-Initiated Utility Frameworks:
   - Use `/to-spec` for functional system design synthesis.
   - Use `/to-tickets` for backlog distribution into tracer-bullet vertical slices.
@@ -23,13 +23,15 @@
 
 ## d. Project Lifecycle
 - **Starting from Scratch:**
-  1. Planning & Exploration (`/wayfinder` — chart the map, surface decisions)
-  2. Deep Interview & Grilling (`/grilling` or `/grill-with-docs` — relentless Q&A to build shared understanding)
-  3. Spec Synthesis (`/to-spec`)
-  4. Task Deconstruction (`/to-tickets`)
-  5. Implementation Loop (`/implement` → `/tdd` → `/code-review`)
+  1. Project Scan & Vision Intake (read the project, ask the user for their idea, goals, priorities, and every detail)
+  2. Big Decision Grilling (`/grilling` — resolve foundational project decisions: why, what stack, how)
+  3. Planning & Exploration (`/wayfinder` — chart the map, surface remaining decisions)
+  4. Deep Interview & Grilling (`/grilling` or `/grill-with-docs` — relentless Q&A to build shared understanding)
+  5. Spec Synthesis (`/to-spec`)
+  6. Task Deconstruction (`/to-tickets`)
+  7. Implementation Loop (`/implement` → `/tdd` → `/code-review`)
 - **Onboarding an Existing Project/Plan:**
-  1. Codebase & Spec Onboarding (`/kickoff` workflow)
+  1. Codebase & Spec Onboarding (`kickoff` workflow)
      - Code understanding and review (`/code-review`)
      - Plan / documentation ingestion and grilling (`/grill-with-docs`)
      - Domain glossary extraction (`/ubiquitous-language`)

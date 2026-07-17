@@ -50,14 +50,14 @@ Both commands scaffold the `.agents/` directory into your project.
 Open your terminal AI agent (Claude Code, Gemini CLI, or similar) and run:
 
 ```
-/kickoff
+kickoff
 ```
 
 ---
 
-## What happens after /kickoff?
+## What happens after kickoff?
 
-The agent starts by showing you the complete plan: a table of every phase, which skill powers it, and what it does.
+The agent starts by scanning your project files, then asks you to describe your vision. Before breaking anything down, it grills you on the big foundational decisions.
 
 For every phase, the agent:
 
@@ -71,55 +71,69 @@ Nothing happens silently. You stay in control throughout.
 
 ## The Kickoff Workflow
 
-`/kickoff` runs a 9-phase pipeline that takes a project from idea to working, tested code.
+`kickoff` runs a 12-phase pipeline that takes a project from idea to working, tested code.
 
-### Phase 1 -- Wayfinder
+### Phase 0 -- Project Scan
 
-Maps out the project. Identifies decisions, unknowns, and milestones so there is a clear path forward before any code is written.
+The agent reads your project directory — files, config, dependencies, existing code — and summarizes what it found. This gives it full context before asking you anything.
+
+### Phase 1 -- User Vision Intake
+
+The agent asks you one big open-ended question: what are you trying to build, how, your priorities, and every technical and non-technical detail you can think of. It listens fully, then confirms understanding.
+
+### Phase 2 -- Big Decision Grilling
+
+Before breaking anything down, the agent grills you on the foundational decisions that shape everything else: why the project exists, what stack to use, architecture choices, deployment model, constraints, and priorities. One question at a time.
+
+**Skill:** `/grilling`
+
+### Phase 3 -- Wayfinder
+
+With the big picture locked, the agent maps remaining decisions and unknowns into a structured decision map.
 
 **Skill:** `/wayfinder`
 
-### Phase 2 -- Code Review (optional)
+### Phase 4 -- Code Review (optional)
 
 If you are working with an existing codebase, this phase audits it for design alignment and coding standards before changes are introduced.
 
 **Skill:** `/code-review`
 
-### Phase 3 -- Grilling
+### Phase 5 -- Deep Grilling
 
-The agent interviews you about architecture, edge cases, data handling, and validation. It asks questions one at a time to uncover gaps and ambiguities in the plan. It also extracts domain terminology into a shared glossary so there is no confusion later.
+The agent interviews you about detailed architecture, edge cases, data handling, and validation. It asks questions one at a time to uncover gaps and ambiguities. It also extracts domain terminology into a shared glossary.
 
 **Skill:** `/grilling` + `/grill-with-docs`
 
-### Phase 4 -- Spec Synthesis
+### Phase 6 -- Spec Synthesis
 
 Compiles everything discussed so far into a formal technical specification. This includes the problem statement, proposed solution, user stories, architecture, testing strategy, and what is explicitly out of scope.
 
 **Skill:** `/to-spec`
 
-### Phase 5 -- Ticket Breakdown
+### Phase 7 -- Ticket Breakdown
 
 Splits the specification into small, independent tasks. Each task is a vertical slice that touches the database, logic, UI, and tests together. Dependencies between tasks are mapped out.
 
 **Skill:** `/to-tickets`
 
-### Phase 6 -- Implementation
+### Phase 8 -- Implementation
 
 Picks up each task in dependency order and implements it using test-driven development. Tests are written first, then the code to make them pass, then the code is cleaned up.
 
 **Skill:** `/implement` + `/tdd`
 
-### Phase 7 -- Post-Implementation Review
+### Phase 9 -- Post-Implementation Review
 
 Reviews all new code against the original specification and coding standards. Catches anything that was missed or does not match what was agreed.
 
 **Skill:** `/code-review`
 
-### Phase 8 -- Suggestions
+### Phase 10 -- Suggestions
 
 A final review of the codebase. Reports on current issues, technical debt, performance ideas, UX improvements, and security considerations. If you want to act on any suggestion, you can loop back to the grilling phase.
 
-### Phase 9 -- Skill Discovery
+### Phase 11 -- Skill Discovery
 
 Shows you the full catalog of available skills beyond the kickoff pipeline. You can try any of them immediately or save them for later.
 
@@ -169,7 +183,7 @@ Once installed, the `.agents/` directory looks like this:
 ```
 .agents/
   skills/              # 39 reusable skills
-  workflows/           # Markdown workflows like /kickoff
+  workflows/           # Markdown workflows like kickoff
   CONTEXT.md           # Shared project context, terminology, and standards
   AGENTS.MD            # Skill routing and workspace configuration
   AGENTS_README.md     # Detailed operations guide
@@ -194,7 +208,7 @@ Skills read from this file automatically. Once your project context is establish
 
 ## Available Skills
 
-SkilledAgent includes 39 skills organized by category. Each skill can be used independently or as part of `/kickoff`.
+SkilledAgent includes 39 skills organized by category. Each skill can be used independently or as part of `kickoff`.
 
 ### Engineering
 

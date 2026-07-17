@@ -1,34 +1,37 @@
 ---
-description: Full project pipeline — wayfind, grill, spec, ticket, implement, review.
+description: Full project pipeline — scan, vision intake, big decisions, wayfind, grill, spec, ticket, implement, review.
 ---
 
-# /kickoff — Orchestrated Project Pipeline
+# kickoff — Orchestrated Project Pipeline
 
 This workflow chains engineering skills into an idea → production pipeline. Perform phases sequentially. Do not proceed without user confirmation.
 
-> **Trigger:** `/kickoff`
+> **Trigger:** `kickoff`
 > **Supports:** New projects and existing codebase onboarding.
 
 ---
 
 ## 👋 Welcome & Plan Overview (Always Show First)
 
-When the user runs `/kickoff`, print this overview first:
+When the user runs `kickoff`, print this overview first:
 
-> "Welcome to SkilledAgent! `/kickoff` runs a structured 9-phase orchestration pipeline to go from idea to test-driven production code."
+> "Welcome to SkilledAgent! `kickoff` runs a structured 12-phase orchestration pipeline to go from idea to test-driven production code."
 
 **Phase Plan:**
 | Phase | Goal | Skill |
 |---|---|---|
-| 1. Wayfinder | Map project decisions/unknowns | `/wayfinder` |
-| 2. Code Review | Audit existing code (if any) | `/code-review` |
-| 3. Grilling | Deep Q&A to align details | `/grilling` + `/grill-with-docs` |
-| 4. Spec Synthesis | Write formal specification document | `/to-spec` |
-| 5. Ticket Breakdown | Break spec into vertical-slice task tickets | `/to-tickets` |
-| 6. Implementation | Develop using TDD & code review checks | `/implement` + `/tdd` |
-| 7. Code Review | Final post-implementation audit | `/code-review` |
-| 8. Suggestions | Final review and recommendations | Synthesis |
-| 9. Skill Discovery | Reference guide to other 39 tools | Tour |
+| 0. Project Scan | Read and digest the project files | Filesystem scan |
+| 1. User Vision Intake | Understand the user's idea, goals, and priorities | Open-ended prompt |
+| 2. Big Decision Grilling | Resolve foundational project decisions | `/grilling` |
+| 3. Wayfinder | Map remaining decisions/unknowns | `/wayfinder` |
+| 4. Code Review | Audit existing code (if any) | `/code-review` |
+| 5. Deep Grilling | Architecture & edge-case Q&A | `/grilling` + `/grill-with-docs` |
+| 6. Spec Synthesis | Write formal specification document | `/to-spec` |
+| 7. Ticket Breakdown | Break spec into vertical-slice task tickets | `/to-tickets` |
+| 8. Implementation | Develop using TDD & code review checks | `/implement` + `/tdd` |
+| 9. Code Review | Final post-implementation audit | `/code-review` |
+| 10. Suggestions | Final review and recommendations | Synthesis |
+| 11. Skill Discovery | Reference guide to other 39 tools | Tour |
 
 > "Before starting each phase, I will **announce the skill** and **why** I select it. I will always ask for your confirmation before moving to the next phase."
 
@@ -54,13 +57,97 @@ If context matches triggers below, suggest the skill and explain what it does, w
 
 ---
 
-## Phase 1: Wayfinder — Chart the Map
+## Phase 0: Project Scan — Read the Landscape
+
+*No special skill — filesystem exploration*
+
+> 🔧 **Announce before starting:** "I'm scanning your project directory to understand what's already here — files, folder structure, config, dependencies, and existing code — so I have full context before asking you anything."
+
+1. Recursively scan the project directory: `src/`, config files (`package.json`, `tsconfig.json`, `.env`, etc.), README, existing documentation, test files, and any `.agents/` or `.claude/` configuration.
+2. Summarize findings to the user:
+   - What languages/frameworks are detected
+   - What files/folders exist and their apparent purpose
+   - Any existing tests, CI config, or deployment setup
+   - Whether this appears to be a fresh project or an existing codebase
+3. Present the summary and ask: "Is this picture accurate? Anything I missed or misread?"
+
+**Exit criteria:** User confirms the scan is accurate, or corrects any misunderstandings.
+
+---
+
+## Phase 1: User Vision Intake — What Are You Building?
+
+*No special skill — open-ended intake prompt*
+
+> 🔧 **Announce before starting:** "Now I need to hear your vision. I'm going to ask you one big question, and I want you to tell me everything — your idea, how you want to build it, your priorities, and every technical and non-technical detail you can think of."
+
+1. Ask the user:
+   > "Tell me what you're trying to implement. Share your general idea of what you want to build and how, your priorities, and every technical and non-technical detail you can think of. Don't hold back — the more context I have, the better I can help."
+2. Listen fully. Do not interrupt or start breaking things down yet.
+3. Ask clarifying follow-ups **only** if something is genuinely unclear — but do not start grilling or making decisions yet.
+4. Summarize back what you heard and confirm understanding.
+
+**Exit criteria:** User confirms: "Yes, that's what I want to build."
+
+---
+
+## Phase 2: Big Decision Grilling — Foundational Questions
+
+**Skill:** `/grilling`
+
+> 🔧 **Announce before starting:** "Before I break this into parts, I need to resolve the **big foundational decisions** about this project. I'm going to grill you on the high-level questions that shape everything else. One question at a time."
+
+1. Run `/grilling` focused exclusively on **project-level foundational decisions**.
+2. Ask questions one at a time from these categories (skip any already answered in Phase 1):
+
+   **Purpose & Problem:**
+   - Why is this project being built? What problem does it solve?
+   - Who are the target users/customers?
+   - What does success look like? What are the success metrics?
+
+   **Technical Stack:**
+   - What programming language(s) and runtime?
+   - What framework(s) — and why those over alternatives?
+   - What database/data storage? SQL vs NoSQL vs something else?
+   - What testing framework and testing philosophy?
+
+   **Architecture:**
+   - Monolith vs microservices vs serverless?
+   - API-first or UI-first development?
+   - Monorepo vs multi-repo?
+   - What's the state management strategy (if frontend)?
+
+   **Deployment & Infrastructure:**
+   - Where does this run? Cloud provider / self-hosted / edge?
+   - CI/CD pipeline — what does deployment look like?
+   - What environments (dev, staging, prod)?
+
+   **Constraints & Priorities:**
+   - Budget constraints?
+   - Timeline — when does this need to ship?
+   - Team size — solo developer or team?
+   - What's the #1 priority: speed to ship, code quality, scalability, or something else?
+
+   **Business & Product:**
+   - Is there a business model? Paid, free, freemium?
+   - Are there compliance/legal requirements (GDPR, HIPAA, etc.)?
+   - Security model — authentication, authorization?
+   - Any third-party integrations required?
+
+3. For each question, provide your recommended answer based on the project context.
+4. Record all decisions. These will populate `CONTEXT.md` sections 3 and 4.
+
+**Exit criteria:** All foundational decisions are resolved. User agrees the big picture is locked.
+
+---
+
+## Phase 3: Wayfinder — Chart the Map
 
 **Skill:** `/wayfinder`
 
-> 🔧 **Announce before starting:** "I'm using **`/wayfinder`** to chart a decision map of your project, surfacing unknowns so we have a clear path forward."
+> 🔧 **Announce before starting:** "The big decisions are locked. Now I'm using **`/wayfinder`** to chart a decision map of remaining unknowns — the smaller decisions and investigations we need to resolve before implementation."
 
-1. Chart decision map with `/wayfinder`.
+1. Chart decision map with `/wayfinder`, using all context from Phases 0-2.
 2. Define destination (what does "done" look like?).
 3. Fan out breadth-first across open decisions/unknowns. (Skip map if fully clear).
 4. Create the tracker issue/tickets.
@@ -69,7 +156,7 @@ If context matches triggers below, suggest the skill and explain what it does, w
 
 ---
 
-## Phase 2: Code Review — Existing Codebase Audit (if applicable)
+## Phase 4: Code Review — Existing Codebase Audit (if applicable)
 
 **Skill:** `/code-review` *(Skip if starting from scratch)*
 
@@ -83,11 +170,11 @@ If context matches triggers below, suggest the skill and explain what it does, w
 
 ---
 
-## Phase 3: Grilling — Deep Q&A Interview
+## Phase 5: Deep Grilling — Architecture & Edge-Case Q&A
 
 **Skill:** `/grilling` + `/grill-with-docs`
 
-> 🔧 **Announce before starting:** "I'm using **`/grilling`** to interview you on architecture, edge cases, and datastores. We must reach shared understanding before writing code."
+> 🔧 **Announce before starting:** "I'm using **`/grilling`** to interview you on the detailed architecture, edge cases, and datastores. We must reach shared understanding before writing code."
 
 1. Run `/grilling` (or `/grill-with-docs` for ADRs & glossary extraction).
 2. Q&A on architecture, edge cases, concurrency, and validation. Ask questions one at a time.
@@ -98,7 +185,7 @@ If context matches triggers below, suggest the skill and explain what it does, w
 
 ---
 
-## Phase 4: Spec Synthesis
+## Phase 6: Spec Synthesis
 
 **Skill:** `/to-spec`
 
@@ -111,7 +198,7 @@ If context matches triggers below, suggest the skill and explain what it does, w
 
 ---
 
-## Phase 5: Ticket Breakdown
+## Phase 7: Ticket Breakdown
 
 **Skill:** `/to-tickets`
 
@@ -125,7 +212,7 @@ If context matches triggers below, suggest the skill and explain what it does, w
 
 ---
 
-## Phase 6: Implementation
+## Phase 8: Implementation
 
 **Skill:** `/implement` (uses `/tdd` and `/code-review`)
 
@@ -140,7 +227,7 @@ If context matches triggers below, suggest the skill and explain what it does, w
 
 ---
 
-## Phase 7: Post-Implementation Code Review
+## Phase 9: Post-Implementation Code Review
 
 **Skill:** `/code-review`
 
@@ -153,19 +240,19 @@ If context matches triggers below, suggest the skill and explain what it does, w
 
 ---
 
-## Phase 8: Suggestions & Next Steps
+## Phase 10: Suggestions & Next Steps
 
 *Synthesis phase (no special skill)*
 
 1. Review the codebase/deliverable.
 2. Report: current issues/debt, performance ideas, UX tweaks, and security hardening.
-3. Loop back to Phase 3 (Grilling) if acting on suggestions.
+3. Loop back to Phase 5 (Deep Grilling) if acting on suggestions.
 
-**Exit Criteria:** User is satisfied or decides to trigger a new `/kickoff` loop.
+**Exit Criteria:** User is satisfied or decides to trigger a new `kickoff` loop.
 
 ---
 
-## Phase 9: Skill Discovery — What Else Can You Do?
+## Phase 11: Skill Discovery — What Else Can You Do?
 
 Present other skills in the kit, explain when to use them, and ask the user what interests them:
 

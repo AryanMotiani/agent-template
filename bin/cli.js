@@ -17,7 +17,7 @@ try {
     fs.cpSync(srcDir, destDir, { recursive: true });
     console.log('Successfully installed SkilledAgent!');
     console.log('\nTo get started, open your AI agent and run:');
-    console.log('  /kickoff\n');
+    console.log('  kickoff\n');
 } catch (err) {
     console.error('Failed to copy files:', err);
     process.exit(1);
